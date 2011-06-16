@@ -38,7 +38,7 @@ function nice_time_format(date) {
 	difference = Math.round(difference);
 	
 	/* we never want to return 0 seconds, it looks funny */
-	if ((j == 0) && (difference == 0)) {
+	if ((j == 0) && (difference < 30)) {
 		return "seconds ago";
 	}
 	
@@ -61,14 +61,14 @@ function nice_time_format(date) {
 			else { ret_val = days[d.getDay()]; }
 		} else {
 			if ((d.getFullYear() === n.getFullYear()) && (tense == 'ago')) {
-				ret_val = months[d.getMonth()];
+				ret_val = months[d.getMonth()]+' ';
 				if (d.getDate() < 10) {
 					ret_val += '0'+d.getDate();
 				} else {
 					ret_val += d.getDate();
 				}
 			} else {
-				ret_val = months[d.getMonth()];
+				ret_val = months[d.getMonth()]+' ';
 				if (d.getDate() < 10) {
 					ret_val += '0'+d.getDate();
 				} else {
@@ -81,8 +81,8 @@ function nice_time_format(date) {
 		}
 		
 		var hour = (d.getHours() % 12),
-			min = nice_date.getMinutes(),
-			meridian = (hour < 12) ? 'am' : 'pm';
+			min = d.getMinutes(),
+			meridian = (d.getHours() < 12) ? 'am' : 'pm';
 
 		if (hour == 0) {
 			hour = 12;
