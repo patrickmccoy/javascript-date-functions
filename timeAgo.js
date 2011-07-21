@@ -1,6 +1,7 @@
 /**
  * returns string
  * this function returns the time difference between two times in words, Facebook style
+ * it is passed a date object of the time you want to display
  */
 function nice_time_format(date) {
 

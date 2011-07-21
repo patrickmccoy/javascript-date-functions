@@ -1,6 +1,7 @@
 /**
  * Format a unix timestamp to look nice and in a more readable format than the standard toString() function.
  * mm/dd/yyyy hh:mm am|pm
+ * it is passed a date object of the time you want to display
  */
 var niceTime = function(timestamp) {
 	var nice_date = new Date(timestamp*1000);
